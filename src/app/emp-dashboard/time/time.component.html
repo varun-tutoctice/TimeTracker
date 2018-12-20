@@ -1,0 +1,186 @@
+<div class="row centertag" style="position: absolute; z-index: 2">
+    <div class="col s12">
+        <div class="card-panel" style="color: white; background: rgba(0,0,0,0.5)">
+            <h5 class="greeting"></h5>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m12 l12">
+        <div class="row">
+            <div class="col s12 m6 l6" style="margin-top: 1%">
+                <div class="card card-small" style="background: rgba(0, 0, 0, 0.5)">
+                    <div><video #video id="video" autoplay width="100%" height="100%"></video></div>
+                    <div><button class="btn waves-effect center-align waves-light gradient-45deg-purple-deep-orange min-height-100 white-text btnclick"
+                            id="snap" (click)="capture()"> <i class="material-icons right" style="color:navy; font-size: 140%">camera_alt</i>Snap
+                            Photo
+                        </button></div>
+                    <canvas #canvas id="canvas" width="105" height="80" style="display: none"></canvas>
+                    <img src="{{ captures }}" style="padding: 3.1%">
+                </div>
+                <div class="card-action">
+                </div>
+            </div>
+            <div class="col s12 m6 l6 screen">
+                <div class="card card-screen">
+                    <ul class="tabs">
+                        <li class="tab col s6 timein"><a class="active gradient-45deg-purple-deep-purple min-height-100 white-text timein"
+                                style="font-size: 120%; font-weight: 500; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+                                href="#test1">Time-in</a></li>
+                        <li class="tab col s6 timein"><a class="gradient-45deg-purple-deep-purple min-height-100 white-text timein"
+                                href="#test2" style="color: whitesmoke; font-size: 120%; font-weight: 500; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Time-out</a></li>
+                    </ul>
+
+                    <div id="test1" class="col s12" style="margin-top: 2%">
+                        <div class="row">
+                            <form class="col s12" name="Form" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <label for="timeinname" class="timeinname">First Name
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeinname" name="timeinname" ngModel="{{  authService.currentUser.firstname }}" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="col s12 rowsecond">
+                                        <label for="timeinemail" class="timeinname">Email</label>
+                                        <div>
+                                            <input type="text" id="timeinemail" name="timeinemail" ngModel="{{  authService.currentUser.email }}" readonly="true">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row rowsecond">
+                                    <div class="col s6">
+                                        <label for="timeindate" class="timeinname">Current Date
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeindate" name="timeindate" ngModel="{{ date.value | date }}" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="col s6" style="display: none">
+                                        <label for="timeintime" class="timeinname">Current Time
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeintime" name="timeintime" ngModel="{{ date.value | date:'MMM d, y, h:mm a' }}" readonly="true">
+                                        </div>
+
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="timeintime" class="timeinname">Current Time
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeintime" name="timeintime" value="{{ date.value | date:'shortTime' }}" readonly="true">
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 rowsecond">
+                                        <label for="timeinimage" class="timeinname">Image Holder
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeinimage" name="timeinimage" ngModel="{{ captures }}" readonly="true" required="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn modal-trigger waves-effect waves-light gradient-45deg-purple-deep-orange min-height-100 white-text btnclick rowsecond"
+                                    data-target="modal2">
+                                    <i class="material-icons right" style="color:navy;  font-size: 140%; font-weight: 800">access_time</i>Time-in</button>
+                                <!-- Modal Structure -->
+                                <div id="modal2" class="modal">
+                                    <div class="modal-content">
+                                        <h5>Confirm if you want to Time-in</h5>
+                                        <p>Current Date and time: <span style="color: red">{{ date.value | date:'MMM d, y,
+                                                h:mm a' }}</span> </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="click" class="waves-effect waves-light btn blue min-height-100 white-text " style="font-weight: 500"><i
+                                                class="material-icons right" style="color:whitesmoke; font-size: 140%; font-weight: 800">check</i>Confirm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="test2" class="col s12" style="margin-top: 2%">
+                        <div class="row valign-wrapper">
+                            <form class="col s12" #g="ngForm" (ngSubmit)="saveTimeout(g)" novalidate>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <label for="timeoutname" class="timeinname">First Name
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeoutname" name="timeoutname" ngModel="{{  authService.currentUser.firstname }}" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="col s12  rowsecond">
+                                        <label for="timeoutemail" class="timeinname rowsecond">Email</label>
+                                        <div>
+                                            <input type="text" id="timeoutemail" name="timeoutemail" ngModel="{{  authService.currentUser.email }}" readonly="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row " style="display:none;">
+                                    <div class="col s12">
+                                        <label for="timeintime" class="timeinname">Your Timed-in Date and Time</label>
+                                        <div *ngIf="timein?.data">
+                                            <input type="text" id="timeintime" name="timeintime" ngModel="{{ timein?.data.timeintime | date:'MMM d, y, h:mm a'}}" readonly="true">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row rowsecond">
+                                    <div class="col s6">
+                                        <label for="timeoutdate" class="timeinname">Current Date
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeoutdate" name="timeoutdate" ngModel="{{ date.value | date }}" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="col s6" style="display:none">
+                                        <label for="timeouttime" class="timeinname">Current Time
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeouttime" name="timeouttime" ngModel="{{ date.value | date:'MMM d, y, h:mm a' }}" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="timeintime" class="timeinname">Current Time
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeintime" name="timeintime" value="{{ date.value | date:'shortTime' }}" readonly="true">
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 rowsecond">
+                                        <label for="timeoutimage" class="timeinname">Image Holder
+                                        </label>
+                                        <div>
+                                            <input type="text" id="timeoutimage" name="timeoutimage" ngModel="{{ captures }}" readonly="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="timeout" class=" rowsecond waves-effect waves-light btn modal-trigger gradient-45deg-purple-deep-orange min-height-100 white-text btnclick"
+                                    data-target="modal1"><i class="material-icons right" style="color:navy; font-size: 140%; font-weight: 800">access_time</i>Time-out</button>
+
+                                <!-- Modal Structure -->
+                                <div id="modal1" class="modal">
+
+                                    <div class="modal-content">
+                                        <h5>Confirm if you want to Time-out</h5>
+                                        <p>Current Date and time: <span style="color: red">{{ date.value | date:'MMM d, y,
+                                                h:mm a' }}</span> </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="waves-effect waves-light btn blue min-height-100 white-text " style="font-weight: 500"><i
+                                                class="material-icons right" style="color:whitesmoke; font-size: 140%; font-weight: 800">check</i>Confirm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>

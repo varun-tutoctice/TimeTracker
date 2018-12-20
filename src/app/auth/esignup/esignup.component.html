@@ -1,0 +1,87 @@
+<div class="valign-wrapper row login-box">
+    <div class="col hoverable s10 pull-s1 m6 pull-m3 l8 pull-l2 glowUp" style="background-color: rgba(255, 255,255,0.3)">
+        <div class="card hoverable center-align z-depth-3" style="background-color: rgba(0, 0,0,0.7)">
+            <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)" novalidate autocomplete="off">
+                <div class="card-content white-text halign-wrapper">
+                    <span class="card-title center-align">Register</span>
+                    <div class="row">
+                        <div class="input-field col s6" [ngClass]="{'has-error': registerForm.get('firstname').invalid && registerForm.get('firstname').dirty}">
+                            <label for="first_name"><i class="material-icons left">account_circle</i>First Name<sup>*</sup></label>
+                            <input type="text" class="form-control" [formControl]="firstname" id="fname" required>
+                            <div class="text-danger" *ngIf="registerForm.get('firstname').dirty && registerForm.get('firstname').errors">
+                                <span style="padding:4px 0 0" *ngIf="registerForm.get('firstname').errors.required">
+                                    Please enter your first name
+                                </span>
+                            </div>
+                        </div>
+                        <div class="input-field col s6" [ngClass]="{'has-error': registerForm.get('lastname').invalid && registerForm.get('lastname').dirty}">
+                            <label for="lname"><i class="material-icons left">account_circle</i>Last Name<sup>*</sup></label>
+                            <input type="text" [formControl]="lastname" id="lname">
+                            <div class="text-danger" *ngIf="registerForm.get('lastname').dirty && registerForm.get('lastname').errors">
+                                <span style="padding:4px 0 0" *ngIf="registerForm.get('lastname').errors.required">
+
+                                    Please enter your last name
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6" [ngClass]="{'has-error': registerForm.get('email').invalid && registerForm.get('email').dirty}">
+                            <label for="email"><i class="material-icons left">email</i>Email<sup>*</sup></label>
+                            <input type="text" [formControl]="email" id="email" onkeyup="this.value = this.value.toLowerCase();">
+                            <div class="text-danger" *ngIf="registerForm.get('email').dirty && registerForm.get('email').errors">
+                                <span style="padding:4px 0 0" *ngIf="registerForm.get('email').invalid">
+                                    Enter your Aurotech email address
+                                </span>
+                            </div>
+
+                        </div>
+                        <div formGroupName="passwordGroup" [ngClass]="{'has-error': registerForm.get('passwordGroup').errors }">
+
+                            <div class="input-field col s3" [ngClass]="{'has-error': registerForm.get('passwordGroup.password').invalid && registerForm.get('passwordGroup.password').dirty}">
+                                <label for="password"><i class="material-icons left">lock</i>Password<sup>*</sup></label>
+                                <input type="password" [formControl]="password" id="password">
+
+                                <div class="text-danger" *ngIf="registerForm.get('passwordGroup.password').dirty && registerForm.get('passwordGroup.password').errors">
+
+                                    <span style="padding:4px 0 0" *ngIf="registerForm.get('passwordGroup.password').errors.required">
+                                        Enter password
+                                    </span>
+                                    <span style="padding:4px 0 0" *ngIf="registerForm.get('passwordGroup.password').errors.pattern">
+                                        Password criteria: Upper and lower case, number & special characters
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-field col s3" [ngClass]="{'has-error': registerForm.get('passwordGroup.retypepass').invalid && registerForm.get('passwordGroup.retypepass').dirty}">
+                                <label for="retypepass"><i class="material-icons left">lock</i>Retype Password<sup>*</sup></label>
+                                <input type="password" [formControl]="retypepass" id="retypepass">
+
+                                <div class="text-danger" *ngIf="(registerForm.get('passwordGroup.retypepass').touched || registerForm.get('passwordGroup.retypepass').dirty) && (registerForm.get('passwordGroup.retypepass').errors || registerForm.get('passwordGroup').errors)">
+
+                                    <span style="padding:4px 0 0" *ngIf="registerForm.get('passwordGroup.retypepass').errors?.required">
+                                        Confirm your password
+                                    </span>
+                                    <span style="padding:4px 0 0" *ngIf="registerForm.get('passwordGroup').errors?.mismatchedPassword">
+                                        Password does not match
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="registerForm.invalid" class="btn waves-effect waves-light center-align pulse" type="submit">Register
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <!-- <button  type="reset" class="btn waves-effect waves-light center-align pulse">Reset
+                <i class="material-icons right">send</i>
+              </button> -->
+                </div>
+
+                <div class="card-action">
+                    <p style="text-align: center; color: papayawhip;">Already Registered!! &nbsp;&nbsp; <a [routerLink]="['/auth/elogin']">Login
+                            here</a></p>
+
+                </div>
+
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,22 @@
+<div class="containerbg">
+<nav class="hello z-depth-3">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo"><img id="logo2" class="shadowfilter" src="../../assets/AT-LOGO.png" alt="" height="50" style="margin-top: 5px"></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li><a (click)="showElogin()" style="margin-right: 30px">Login</a></li>
+      <li><a (click)="showEsignup()"  style="margin-right: 30px;">Signup</a></li>
+      <li><a (click)="showAlogin()"  style="margin-right: 30px;">Admin</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a (click)="showElogin()" >Login</a></li>
+      <li><a (click)="showEsignup()">Signup</a></li>
+      <li><a (click)="showAlogin()">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+</div>

@@ -16,6 +16,12 @@
     "lib": [
       "es2017",
       "dom"
+    ],
+    "types": [
+      "jquery",
+      "jasmine",
+      "jasminewd2",
+      "selenium-webdriver"
     ]
-  }
+  },
 }

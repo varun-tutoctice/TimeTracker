@@ -1,0 +1,97 @@
+<div class="navbar-fixed">
+
+  <ul *ngIf="authadminService.isAloggedIn()" class="dropdown-content" id="user_dropdown">
+    <!-- <li><a (click)="showAprofile()" class="indigo-text">Profile</a></li> -->
+    <li><a (click)="showApassword()" class="indigo-text">Change Password</a></li>
+    <li class="divider"></li>
+    <li><a [routerLink]="['/alogout']" class="indigo-text" href="#!">Logout</a></li>
+  </ul>
+  <nav class="gradient-45deg-light-blue-cyan z-depth-5">
+    <div class="nav wrapper">
+
+      <a [routerLink]="['/dashboard']" class="brand-logo"><img id="logo2" class="shadowfilter" src="../../assets/AT-LOGO.png"
+          alt="" height="50" style="margin-top: 5px"></a>
+      <a class="button-collapse" data-activates="sidenav"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li style="margin-top:7%">
+          <a materialize="dropdown" class='right dropdown-button' href='' data-activates='user_dropdown'><i class='material-icons'>account_circle</i></a>
+        </li>
+      </ul>
+      <!-- <ul class="right collection hide-on-small-and-down" style="margin:0px;
+      border: 0px solid transparent">
+        <li class="collection-item avatar" style="background-color: transparent;min-height: 60px;">
+          <a href="" class="tooltipped" data-tooltip="Notifications" data-position="top">
+            <i class="material-icons circle white blue-text">notifications_active</i></a>
+        </li>
+        
+      </ul> -->
+
+    </div>
+  </nav>
+</div>
+
+<ul class="side-nav fixed" id="sidenav">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <img src="../../assets/images/gallary/23.png" alt="" class="responsive-img">
+      </div>
+      <a [routerLink]="['/dashboard']">
+        <img src="{{ authadminService.currentAdmin.image }}" alt="" class="circle">
+      </a>
+      <span class="white-text name">{{ authadminService.currentAdmin.firstname }} {{ authadminService.currentAdmin.lastname
+        }}</span>
+      <span class="white-text email">{{ authadminService.currentAdmin.email }}</span>
+    </div>
+  </li>
+
+  <li>
+    <a [routerLink]="['/dashboard']"><i class="material-icons blue-text">dashboard</i>Dashboard
+    </a>
+  </li>
+
+  <li>
+    <a [routerLink]="['timeindetails']"><i class="material-icons blue-text">access_time</i>Timein
+    </a>
+  </li>
+
+  <li>
+    <a [routerLink]="['timeoutdetails']"><i class="material-icons blue-text">alarm_on</i>Timeout
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['timeinout']"><i class="material-icons blue-text">av_timer</i>Time-in-out Complete
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['ausers']"><i class="material-icons blue-text">compare</i>Employee Database
+    </a>
+  </li>
+  <!-- <li>
+    <a href=""><i class="material-icons blue-text">trending_up</i>Analytics
+    </a>
+</li>
+<li>
+    <a href=""><i class="material-icons blue-text">question_answer</i>Comments
+    </a>
+</li> -->
+  <div class="divider"></div>
+
+  <!-- <li>
+    <a href=""><i class="material-icons blue-text">help</i>Help
+    </a>
+</li> -->
+  <li>
+    <a [routerLink]="['Logout']"><i class="material-icons blue-text">exit_to_app</i>Logout
+    </a>
+  </li>
+</ul>
+
+
+<div class="content">
+  <div class="row">
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

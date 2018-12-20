@@ -1,0 +1,31 @@
+<div class="valign-wrapper row login-box">
+  <div class="col hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4 glowUp" style="background-color: rgba(255, 255,255,0.3)">
+    <div class="card hoverable center-align z-depth-3" style="background-color: rgba(0, 0,0,0.7)">
+      <form [formGroup]="loginForm" (ngSubmit)="loginAdmin(loginForm.value)" novalidate autocomplete="off">
+        <div class="card-content white-text halign-wrapper">
+          <span class="card-title center-align">Admin Login</span>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="email"><i class="material-icons left">email</i>Email address</label>
+              <input type="email" id="inputAdmin" class="form-control" [formControl]="email" class="validate" onkeyup="this.value = this.value.toLowerCase();"
+                autofocus>
+              <div class="text-danger" *ngIf="loginForm.get('email').dirty && loginForm.get('email').invalid">
+                Please enter Aurotech Email
+              </div>
+            </div>
+            <div class="input-field col s12">
+              <label for="password"><i class="material-icons left">lock_open</i>Password </label>
+              <input type="password" id="inputPassword" class="form-control" [formControl]="password">
+              <div class="text-danger" *ngIf="loginForm.get('password').dirty && loginForm.get('password').invalid">
+                Please enter password
+              </div>
+            </div>
+          </div>
+          <button class="btn waves-effect waves-light center-align pulse" type="submit" name="action" [disabled]="loginForm.invalid">Log
+            In
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

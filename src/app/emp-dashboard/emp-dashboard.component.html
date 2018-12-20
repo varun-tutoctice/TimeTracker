@@ -1,0 +1,23 @@
+<ul *ngIf="authService.isLoggedIn()" id='dropdown1' class='dropdown-content'>
+  <li><a (click)="showEtime()"><i class="material-icons left">access_time</i>Submit Time</a></li>
+  <!-- <li><a (click)="showEprofile()"><i class="material-icons left">account_circle</i>Update Profile</a></li> -->
+  <li><a (click)="showEpassword()"><i class="material-icons left">lock_outline</i>Change Password</a></li>
+  <li class="divider"></li>
+  <li><a [routerLink]="['/elogout']" style="color: orangered"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+</ul>
+<div class="containerbg">
+  <nav class="gradient-45deg-light-blue-cyan white-text z-depth-5">
+    <div class="nav-wrapper">
+      <a [routerLink]="['/employee']" class="brand-logo"><img id="logo2" class="shadowfilter" src="../../assets/AT-LOGO.png"
+          alt="" height="50" style="margin-top: 5px"></a>
+      <ul class="right hide-on-med-and-down">
+        <!-- Dropdown Trigger -->
+        <li><a materialize="dropdown" class='dropdown-button btn  deep-purple darken-4' href='#' data-activates='dropdown1'>Welcome
+            {{ authService.currentUser.firstname }}<i class="material-icons right" style="color: orangered">exit_to_app</i></a></li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

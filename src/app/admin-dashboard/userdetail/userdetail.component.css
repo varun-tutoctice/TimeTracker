@@ -1,0 +1,78 @@
+.card-panel {
+    transition: box-shadow .25s;
+    padding: 7px;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+label {
+    font-size: .9rem;
+    color: #fff;
+}
+
+@media print {
+    label {
+        font-size: .9rem;
+        color: #000000;
+    }
+    input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        border-radius: 0;
+        outline: none;
+        height: 2rem;
+        width: 100%;
+        font-size: 1rem;
+        margin: 0 0 10px 0;
+        padding: 0;
+        box-shadow: none;
+        box-sizing: content-box;
+        transition: all 0.3s;
+    }
+    .mytext {
+        color: #000000;
+    }
+    .card-special {
+        display: none !important;
+    }
+
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+    outline: none;
+    height: 2rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 10px 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s;
+}
+
+.card-panel {
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.daterow {
+    margin-top: -2%
+}
+
+
+@media only screen and (min-width: 1800px) {
+    .daterow {
+        margin-top: -1%
+    }
+    th {
+        font-size: 20px;
+    }
+    td {
+        font-size: 18px;
+    }
+}
